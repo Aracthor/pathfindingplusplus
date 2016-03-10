@@ -33,3 +33,6 @@ foreach(file ${SRCS_FILES})
 endforeach()
 
 add_executable(pathfindingplusplus ${SRCS})
+target_link_libraries(pathfindingplusplus sfml-graphics)
+target_link_libraries(pathfindingplusplus sfml-system)
+target_link_libraries(pathfindingplusplus sfml-window)
