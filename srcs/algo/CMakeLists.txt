@@ -2,6 +2,7 @@ project("pathfindingplusplus")
 
 set(ALGO_FILES
   Map.cpp
+  MapLoader.cpp
   Position.cpp
   PARENT_SCOPE
   )

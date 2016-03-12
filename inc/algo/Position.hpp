@@ -9,16 +9,16 @@ namespace algo
 class	Position
 {
 public:
-    int	x;
-    int	y;
+    unsigned int	x;
+    unsigned int	y;
 
 public:
     inline Position();
-    inline Position(int x, int y);
+    inline Position(unsigned int x, unsigned int y);
     inline ~Position();
 
 public:
-    void	set(int x, int y);
+    void	set(unsigned int x, unsigned int y);
 
 public:
     inline bool	operator==(const Position& position) const;

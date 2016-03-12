@@ -3,13 +3,13 @@
 
 #include "PathfindingPlusPlus.hpp"
 
-int	main()
+int	main(int argc, char** argv)
 {
     int	return_value;
 
     try
     {
-	PathfindingPlusPlus	application;
+	PathfindingPlusPlus	application(argc, argv);
 	application.start();
     	return_value = 0;
     }

@@ -5,7 +5,7 @@ Position::Position()
 {
 }
 
-Position::Position(int x, int y) :
+Position::Position(unsigned int x, unsigned int y) :
     x(x),
     y(y)
 {

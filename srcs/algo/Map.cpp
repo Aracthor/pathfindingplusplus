@@ -5,14 +5,16 @@
 namespace algo
 {
 
-Map::Map(const unsigned char* data, int width, int height) :
+Map::Map(const char* data, unsigned int width, unsigned int height, const Position& begin, const Position& end) :
     m_width(width),
-    m_height(height)
+    m_height(height),
+    m_begin(begin),
+    m_end(end)
 {
-    int	size = m_width * m_height;
-    int	i;
+    unsigned int	size = m_width * m_height;
+    unsigned int	i;
 
-    m_data = new unsigned char[size];
+    m_data = new char[size];
     for (i = 0; i < size; i++)
     {
 	m_data[i] = data[i];
@@ -23,11 +25,11 @@ Map::Map(const Map& map) :
     m_width(map.getWidth()),
     m_height(map.getHeight())
 {
-    int	i = 0;
-    int	x;
-    int	y;
+    unsigned int	i = 0;
+    unsigned int	x;
+    unsigned int	y;
 
-    m_data = new unsigned char[m_width * m_height];
+    m_data = new char[m_width * m_height];
     for (y = 0; y < m_height; y++)
     {
 	for (x = 0; x < m_width; x++)
@@ -45,12 +47,12 @@ Map::~Map()
 
 
 void
-Map::print(const int* path, int pathSize) const
+Map::print(const int* path, unsigned int pathSize) const
 {
-    int		x, y;
-    int		i;
-    char	tile;
-    bool        isInPath;
+    unsigned int	x, y;
+    unsigned int	i;
+    char		tile;
+    bool		isInPath;
 
     for (y = 0; y < m_height; y++)
     {

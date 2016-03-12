@@ -1,25 +1,25 @@
 namespace algo
 {
 
-int
+unsigned int
 Map::getWidth() const
 {
     return m_width;
 }
 
-int
+unsigned int
 Map::getHeight() const
 {
     return m_height;
 }
 
-unsigned char
-Map::at(int x, int y) const
+char
+Map::at(unsigned int x, unsigned int y) const
 {
     return m_data[y * m_width + x];
 }
 
-unsigned char
+char
 Map::at(const Position& position) const
 {
     return this->at(position.x, position.y);

@@ -4,7 +4,7 @@ namespace algo
 {
 
 void
-Position::set(int x, int y)
+Position::set(unsigned int x, unsigned int y)
 {
     this->x = x;
     this->y = y;
