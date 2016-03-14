@@ -8,13 +8,23 @@ PathfindingPlusPlus::PathfindingPlusPlus(int argc, char** argv) :
     {
 	throw std::runtime_error(std::string("Usage: ") + argv[0] + " FILE ALGO");
     }
-    m_mapLoader.loadFromFile(argv[1]);
+    m_map = m_mapLoader.loadFromFile(argv[1]);
+
+    if (m_map)
+    {
+	m_displayMap = new graphic::Map(*m_map);
+
+	sf::View	view(sf::Vector2f(m_displayMap->getWidth() / 2, m_displayMap->getHeight() / 2),
+			     sf::Vector2f(m_displayMap->getWidth(), m_displayMap->getHeight()));
+	m_window->setView(view);
+    }
 }
 
 PathfindingPlusPlus::~PathfindingPlusPlus()
 {
     if (m_map)
     {
+	delete m_displayMap;
 	delete m_map;
     }
 }
@@ -28,5 +38,5 @@ PathfindingPlusPlus::manageData()
 void
 PathfindingPlusPlus::manageDisplay(sf::RenderWindow* window) const
 {
-    (void)window;
+    window->draw(*m_displayMap);
 }

@@ -3,6 +3,7 @@
 
 # include "algo/MapLoader.hpp"
 # include "graphic/Application.hpp"
+# include "graphic/Map.hpp"
 
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
@@ -21,6 +22,7 @@ private:
 private:
     algo::MapLoader	m_mapLoader;
     algo::Map*		m_map;
+    graphic::Map*	m_displayMap;
 };
 
 # include "PathfindingPlusPlus.ipp"
