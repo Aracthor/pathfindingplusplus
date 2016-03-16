@@ -1,6 +1,8 @@
 #ifndef GRAPHIC_PATHFINDING_PLUS_PLUS_HPP_
 # define GRAPHIC_PATHFINDING_PLUS_PLUS_HPP_
 
+# include "algo/AlgorithmList.hpp"
+# include "algo/Clock.hpp"
 # include "algo/MapLoader.hpp"
 # include "graphic/Application.hpp"
 # include "graphic/Map.hpp"
@@ -22,7 +24,10 @@ private:
 private:
     algo::MapLoader	m_mapLoader;
     algo::Map*		m_map;
+    algo::AlgorithmList	m_algorithmList;
+    algo::Algorithm*	m_algorithm;
     graphic::Map*	m_displayMap;
+    algo::Clock::time	m_lastTime;
 };
 
 # include "PathfindingPlusPlus.ipp"

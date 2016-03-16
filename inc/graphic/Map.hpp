@@ -11,6 +11,10 @@
 # define TILE_OUTLINE_THICKNESS	4.0f
 # define TILE_OUTLINE_COLOR	sf::Color::White
 
+# define DISCOVERED_TILE_COLOR	sf::Color::Green
+# define VISITED_TILE_COLOR	sf::Color::Yellow
+# define PATH_TILE_COLOR	sf::Color::Red
+
 namespace graphic
 {
 
@@ -26,6 +30,7 @@ public:
 public:
     inline unsigned int	getWidth() const;
     inline unsigned int	getHeight() const;
+    inline void		setTileColor(unsigned int x, unsigned int y, const sf::Color& color);
 
 private:
     unsigned int	m_width;
