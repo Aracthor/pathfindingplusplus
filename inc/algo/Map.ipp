@@ -1,6 +1,18 @@
 namespace algo
 {
 
+char
+Map::at(unsigned int x, unsigned int y) const
+{
+    return m_data[y * m_width + x];
+}
+
+char
+Map::at(const Position& position) const
+{
+    return this->at(position.x, position.y);
+}
+
 unsigned int
 Map::getWidth() const
 {
@@ -13,16 +25,16 @@ Map::getHeight() const
     return m_height;
 }
 
-char
-Map::at(unsigned int x, unsigned int y) const
+const Position&
+Map::getBegin() const
 {
-    return m_data[y * m_width + x];
+    return m_begin;
 }
 
-char
-Map::at(const Position& position) const
+const Position&
+Map::getEnd() const
 {
-    return this->at(position.x, position.y);
+    return m_end;
 }
 
 

@@ -23,7 +23,9 @@ Map::Map(const char* data, unsigned int width, unsigned int height, const Positi
 
 Map::Map(const Map& map) :
     m_width(map.getWidth()),
-    m_height(map.getHeight())
+    m_height(map.getHeight()),
+    m_begin(map.getBegin()),
+    m_end(map.getEnd())
 {
     unsigned int	i = 0;
     unsigned int	x;

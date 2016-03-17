@@ -8,5 +8,6 @@ set(ALGO_FILES
   Map.cpp
   MapLoader.cpp
   Position.cpp
+  PositionQueue.cpp
   PARENT_SCOPE
   )

@@ -12,7 +12,7 @@ namespace algo
 class	AlgorithmList
 {
 public:
-    AlgorithmList(graphic::Map& map);
+    AlgorithmList();
     ~AlgorithmList();
 
 public:

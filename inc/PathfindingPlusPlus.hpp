@@ -28,6 +28,7 @@ private:
     algo::Algorithm*	m_algorithm;
     graphic::Map*	m_displayMap;
     algo::Clock::time	m_lastTime;
+    algo::Position*	m_path;
 };
 
 # include "PathfindingPlusPlus.ipp"

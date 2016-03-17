@@ -22,6 +22,13 @@ public:
 
 public:
     inline bool	operator==(const Position& position) const;
+    inline bool	operator!=(const Position& position) const;
+
+public:
+    Position&		operator+=(const Position& position);
+    Position&		operator-=(const Position& position);
+    inline Position	operator+(const Position& position) const;
+    inline Position	operator-(const Position& position) const;
 };
 
 }

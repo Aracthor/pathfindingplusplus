@@ -4,9 +4,9 @@
 namespace algo
 {
 
-AlgorithmList::AlgorithmList(graphic::Map& map)
+AlgorithmList::AlgorithmList()
 {
-    m_algorithms["Dijkstra"] = new Dijkstra(map);
+    m_algorithms["Dijkstra"] = new Dijkstra;
 }
 
 AlgorithmList::~AlgorithmList()

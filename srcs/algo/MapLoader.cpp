@@ -68,7 +68,6 @@ MapLoader::loadLine(const std::string& line)
 {
     unsigned int	x;
 
-    m_height++;
     if (m_width == 0)
     {
 	m_width = line.length();
@@ -78,7 +77,7 @@ MapLoader::loadLine(const std::string& line)
     }
     else if (m_width != line.length())
     {
-        throw std::runtime_error("Error loading map: wrong line size line " + std::to_string(m_height));
+        throw std::runtime_error("Error loading map: wrong line size line " + std::to_string(m_height + 1));
     }
 
     x = 0;
@@ -100,10 +99,11 @@ MapLoader::loadLine(const std::string& line)
 	}
 	else
 	{
-	    throw std::runtime_error("Error loading map: unrecognized character:" + std::to_string(m_height) + ':' + std::to_string(x));
+	    throw std::runtime_error("Error loading map: unrecognized character:" + std::to_string(m_height + 1) + ':' + std::to_string(x));
 	}
 	x++;
     }
+    m_height++;
 }
 
 void

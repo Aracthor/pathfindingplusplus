@@ -14,21 +14,23 @@ public:
     ~Map();
 
 public:
-    inline unsigned int	getWidth() const;
-    inline unsigned int	getHeight() const;
-    inline char		at(unsigned int x, unsigned int y) const;
-    inline char		at(const Position& position) const;
-    void		print(const int* path = NULL, unsigned int pathSize = 0) const;
+    inline char			at(unsigned int x, unsigned int y) const;
+    inline char			at(const Position& position) const;
+    inline unsigned int		getWidth() const;
+    inline unsigned int		getHeight() const;
+    inline const Position&	getBegin() const;
+    inline const Position&	getEnd() const;
+    void			print(const int* path = NULL, unsigned int pathSize = 0) const;
 
 public:
-    inline void	        set(const Position& position, char step);
+    inline void	        	set(const Position& position, char step);
 
 private:
-    char*		m_data;
-    const unsigned int	m_width;
-    const unsigned int	m_height;
-    Position		m_begin;
-    Position		m_end;
+    char*			m_data;
+    const unsigned int		m_width;
+    const unsigned int		m_height;
+    Position			m_begin;
+    Position			m_end;
 };
 
 }
