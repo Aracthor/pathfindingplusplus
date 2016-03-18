@@ -19,11 +19,12 @@ PathfindingPlusPlus::PathfindingPlusPlus(int argc, char** argv) :
     m_window->setView(view);
 
     m_algorithm = m_algorithmList.chooseAlgorithm(argv[2]);
-    m_algorithm->setDisplayMap(m_displayMap);
     if (!m_algorithm)
     {
 	throw std::runtime_error(std::string("Unknown algorithm \"") + argv[2] + "\".");
     }
+    m_algorithm->setDisplayMap(m_displayMap);
+
     m_path = new algo::Position[m_map->getWidth() * m_map->getHeight()];
 
     clock.reset();
