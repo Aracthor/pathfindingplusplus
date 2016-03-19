@@ -11,6 +11,17 @@ namespace algo
 
 class	AlgorithmList
 {
+private:
+    class	caseLess : public std::binary_function<std::string, std::string, bool>
+    {
+    public:
+	bool	operator()(const std::string& a, const std::string& b) const;
+    };
+
+private:
+    typedef std::map<std::string, Algorithm*, caseLess>	algoMap;
+
+
 public:
     AlgorithmList();
     ~AlgorithmList();
@@ -19,7 +30,7 @@ public:
     inline Algorithm*	chooseAlgorithm(const std::string& name);
 
 private:
-    std::map<std::string, Algorithm*>	m_algorithms;
+    algoMap		m_algorithms;
 };
 
 }

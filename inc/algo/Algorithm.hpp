@@ -15,19 +15,19 @@ public:
 public:
     inline void		setDisplayMap(graphic::Map* map);
     void		solve(const Map& map, Position* path, bool display);
+    virtual void	nextStep() = 0;
+    inline bool		isSolved() const;
 
 protected:
-    inline void		colorVisitedTile(const Position& position);
     inline void		colorDiscoveredTile(const Position& position);
+    inline void		colorVisitedTile(const Position& position);
     inline void		colorPathTile(const Position& position);
-    inline bool		isSolved() const;
     void		fail();
     void		succeed();
     void		reversePath(unsigned int size);
 
 private:
     virtual void	init() = 0;
-    virtual void	nextStep() = 0;
     virtual void	onSuccess() = 0;
 
 protected:

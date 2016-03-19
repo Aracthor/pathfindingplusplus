@@ -37,6 +37,19 @@ Clock::reset()
     return (elapsed);
 }
 
+void
+Clock::substractTime(time substraction)
+{
+    if (substraction > m_elapsedTime)
+    {
+	m_elapsedTime = 0;
+    }
+    else
+    {
+	m_start += substraction;
+    }
+}
+
 }
 
 #if defined(__unix__) || defined(__unix) || defined(unix)

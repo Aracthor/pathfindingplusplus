@@ -54,18 +54,18 @@ Algorithm::succeed()
 {
     m_solved = true;
     this->onSuccess();
-    m_display = true;
     if (m_display)
     {
 	Position	position = m_path[0];
 	unsigned int	i = 0;
 
-	while (position != m_map->getEnd())
+	this->colorPathTile(position);
+	do
 	{
-	    this->colorPathTile(position);
 	    i++;
 	    position = m_path[i];
-	}
+	    this->colorPathTile(position);
+	} while (position != m_map->getEnd());
     }
 }
 

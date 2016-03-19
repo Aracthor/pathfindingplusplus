@@ -16,6 +16,7 @@ public:
 public:
     void	update();
     time	reset();
+    void	substractTime(time substraction);
 
 public:
     inline bool	isRunning() const;

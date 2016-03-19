@@ -10,6 +10,19 @@ Map::Map(const algo::Map& map) :
     m_height(map.getHeight()),
     m_shapes(new sf::RectangleShape[m_width * m_height])
 {
+    this->initRectangles(map);
+    this->initCircles(map);
+}
+
+Map::~Map()
+{
+    delete[] m_shapes;
+}
+
+
+void
+Map::initRectangles(const algo::Map& map)
+{
     unsigned int	x, y;
     sf::RectangleShape	model;
 
@@ -29,9 +42,23 @@ Map::Map(const algo::Map& map) :
     }
 }
 
-Map::~Map()
+
+void
+Map::initCircles(const algo::Map& map)
 {
-    delete[] m_shapes;
+    sf::CircleShape	model;
+
+    model.setRadius(POINT_RADIUS);
+    model.setOutlineThickness(POINT_OUTLINE_THICKNESS);
+    model.setOutlineColor(POINT_OUTLINE_COLOR);
+
+    m_begin = model;
+    m_begin.setFillColor(BEGIN_FILL_COLOR);
+    m_begin.move(map.getBegin().x * TILE_SIZE + POINT_SHIFT, map.getBegin().y * TILE_SIZE + POINT_SHIFT);
+
+    m_end = model;
+    m_end.setFillColor(END_FILL_COLOR);
+    m_end.move(map.getEnd().x * TILE_SIZE + POINT_SHIFT, map.getEnd().y * TILE_SIZE + POINT_SHIFT);
 }
 
 
@@ -44,6 +71,9 @@ Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
 	target.draw(m_shapes[i], states);
     }
+
+    target.draw(m_begin, states);
+    target.draw(m_end, states);
 }
 
 }

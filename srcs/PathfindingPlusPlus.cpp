@@ -4,8 +4,6 @@ PathfindingPlusPlus::PathfindingPlusPlus(int argc, char** argv) :
     graphic::Application(WINDOW_TITLE, WINDOW_WIDTH, WINDOW_HEIGHT),
     m_map(nullptr)
 {
-    algo::Clock	clock;
-
     if (argc != 3)
     {
 	throw std::runtime_error(std::string("Usage: ") + argv[0] + " FILE ALGO");
@@ -27,10 +25,12 @@ PathfindingPlusPlus::PathfindingPlusPlus(int argc, char** argv) :
 
     m_path = new algo::Position[m_map->getWidth() * m_map->getHeight()];
 
-    clock.reset();
+    m_clock.reset();
     m_algorithm->solve(*m_map, m_path, false);
-    clock.update();
-    m_lastTime = clock.getElapsedTime();
+    m_clock.update();
+    m_lastTime = m_clock.getElapsedTime();
+    m_algorithm->solve(*m_map, m_path, true);
+    m_clock.reset();
 }
 
 PathfindingPlusPlus::~PathfindingPlusPlus()
@@ -47,6 +47,15 @@ PathfindingPlusPlus::~PathfindingPlusPlus()
 void
 PathfindingPlusPlus::manageData()
 {
+    if (!m_algorithm->isSolved())
+    {
+	m_clock.update();
+	if (m_clock.getElapsedTime() >= ALGO_REFRESH_RATE)
+	{
+	    m_clock.substractTime(ALGO_REFRESH_RATE);
+	    m_algorithm->nextStep();
+	}
+    }
 }
 
 void

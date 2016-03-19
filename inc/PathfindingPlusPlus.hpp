@@ -11,6 +11,8 @@
 # define WINDOW_HEIGHT	600
 # define WINDOW_TITLE	"Pathfinding++"
 
+# define ALGO_REFRESH_RATE	100000
+
 class	PathfindingPlusPlus : public graphic::Application
 {
 public:
@@ -27,6 +29,7 @@ private:
     algo::AlgorithmList	m_algorithmList;
     algo::Algorithm*	m_algorithm;
     graphic::Map*	m_displayMap;
+    algo::Clock		m_clock;
     algo::Clock::time	m_lastTime;
     algo::Position*	m_path;
 };

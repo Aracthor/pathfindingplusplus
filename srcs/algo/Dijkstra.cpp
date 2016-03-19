@@ -25,6 +25,7 @@ Dijkstra::init()
 {
     m_positionQueue.resize(m_map->getWidth() * m_map->getHeight());
     m_positionQueue.pushBack(m_map->getBegin());
+    m_map->set(m_map->getBegin(), '0');
 }
 
 void
@@ -91,6 +92,10 @@ Dijkstra::tryMovement(const Position& position, char movement)
     {
 	m_positionQueue.pushBack(position);
 	m_map->set(position, movement);
+	if (m_display)
+	{
+	    this->colorDiscoveredTile(position);
+	}
     }
 }
 
