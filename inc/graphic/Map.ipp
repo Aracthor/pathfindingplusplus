@@ -1,4 +1,3 @@
-#include <iostream> // DEBUG
 namespace graphic
 {
 

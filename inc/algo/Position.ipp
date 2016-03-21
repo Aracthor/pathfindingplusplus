@@ -16,6 +16,13 @@ Position::~Position()
 }
 
 
+unsigned int
+Position::distance(const Position& position) const
+{
+    return (abs(this->x - position.x) + abs(this->y - position.y));
+}
+
+
 bool
 Position::operator==(const Position& position) const
 {

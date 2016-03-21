@@ -1,5 +1,14 @@
+#include <cassert>
+
 namespace algo
 {
+
+void
+PositionQueue::checkPush() const
+{
+    assert(m_size < m_maxSize);
+}
+
 
 unsigned int
 PositionQueue::getSize() const

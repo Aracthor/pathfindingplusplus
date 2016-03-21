@@ -26,7 +26,7 @@ protected:
     void		succeed();
     void		reversePath(unsigned int size);
 
-private:
+protected:
     virtual void	init() = 0;
     virtual void	onSuccess() = 0;
 

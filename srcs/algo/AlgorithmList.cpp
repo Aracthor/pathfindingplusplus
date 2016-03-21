@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include "algo/AlgorithmList.hpp"
+#include "algo/AStar.hpp"
 #include "algo/Dijkstra.hpp"
 
 namespace algo
@@ -20,7 +21,9 @@ AlgorithmList::caseLess::operator()(const std::string& a, const std::string& b) 
 
 AlgorithmList::AlgorithmList()
 {
-    m_algorithms["Dijkstra"] = new Dijkstra;
+    m_algorithms["dijkstra"] = new Dijkstra;
+    m_algorithms["a*"] = new AStar;
+    m_algorithms["astar"] = new AStar;
 }
 
 AlgorithmList::~AlgorithmList()

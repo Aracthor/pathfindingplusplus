@@ -21,6 +21,9 @@ public:
     void	set(unsigned int x, unsigned int y);
 
 public:
+    inline unsigned int	distance(const Position& position) const;
+
+public:
     inline bool	operator==(const Position& position) const;
     inline bool	operator!=(const Position& position) const;
 

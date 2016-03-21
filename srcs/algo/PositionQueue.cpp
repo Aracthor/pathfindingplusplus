@@ -2,6 +2,8 @@
 
 #include "algo/PositionQueue.hpp"
 
+#include <cstring>
+
 namespace algo
 {
 
@@ -42,6 +44,31 @@ PositionQueue::pushBack(const Position& position)
     m_size++;
 }
 
+void
+PositionQueue::insert(const Position& position, const IPositionComparator* comparator)
+{
+    unsigned int	index;
+    unsigned int	i;
+
+    this->checkPush();
+
+    index = 0;
+    while (index < m_size && comparator->compare(m_data[index], position) < 0)
+    {
+	index++;
+    }
+
+    i = m_size;
+    while (i > index)
+    {
+    	m_data[i] = m_data[i - 1];
+    	i--;
+    }
+    m_data[index] = position;
+
+    m_size++;
+}
+
 Position&
 PositionQueue::pop()
 {
@@ -53,16 +80,6 @@ PositionQueue::pop()
     m_size--;
 
     return m_data[-1];
-}
-
-
-void
-PositionQueue::checkPush() const
-{
-    if (m_size >= m_maxSize)
-    {
-	throw std::runtime_error("Inserting position in a full queue.");
-    }
 }
 
 }

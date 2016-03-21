@@ -1,7 +1,8 @@
 #ifndef ALGO_POSITION_QUEUE_HPP_
 # define ALGO_POSITION_QUEUE_HPP_
 
-# include "Position.hpp"
+# include "algo/IPositionComparator.hpp"
+# include "algo/Position.hpp"
 
 namespace algo
 {
@@ -15,6 +16,7 @@ public:
 public:
     void		resize(unsigned int maxSize);
     void		pushBack(const Position& position);
+    void		insert(const Position& position, const IPositionComparator* comparator);
     Position&		pop();
 
 public:
@@ -22,7 +24,7 @@ public:
     inline unsigned int	getMaxSize() const;
 
 private:
-    void		checkPush() const;
+    inline void		checkPush() const;
 
 private:
     Position*		m_ptr;

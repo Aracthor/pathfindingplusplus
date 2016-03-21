@@ -1,5 +1,4 @@
 #include "algo/Algorithm.hpp"
-#include <iostream> // DEBUG
 
 namespace algo
 {
