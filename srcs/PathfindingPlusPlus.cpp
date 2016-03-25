@@ -31,7 +31,7 @@ PathfindingPlusPlus::PathfindingPlusPlus(int argc, char** argv) :
     m_algorithm->solve(*m_map, m_path, false);
     m_clock.update();
     m_lastTime = m_clock.getElapsedTime();
-    std::cout << "Elapsed time: " << m_lastTime << "ms." << std::endl;
+    std::cout << "Elapsed time: " << m_lastTime << "us." << std::endl;
     m_algorithm->solve(*m_map, m_path, true);
     m_clock.reset();
 }

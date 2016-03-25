@@ -8,7 +8,7 @@
 # include "graphic/Map.hpp"
 
 # define WINDOW_WIDTH	800
-# define WINDOW_HEIGHT	600
+# define WINDOW_HEIGHT	800
 # define WINDOW_TITLE	"Pathfinding++"
 
 # define ALGO_REFRESH_RATE	100000
