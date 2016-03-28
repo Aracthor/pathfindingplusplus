@@ -4,6 +4,8 @@ set(ALGO_FILES
   Algorithm.cpp
   AlgorithmList.cpp
   AStar.cpp
+  BiDijkstra.cpp
+  BiDirectional.cpp
   Clock.cpp
   Dijkstra.cpp
   Map.cpp

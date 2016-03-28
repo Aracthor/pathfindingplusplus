@@ -2,6 +2,7 @@
 
 #include "algo/AlgorithmList.hpp"
 #include "algo/AStar.hpp"
+#include "algo/BiDijkstra.hpp"
 #include "algo/Dijkstra.hpp"
 
 namespace algo
@@ -24,6 +25,7 @@ AlgorithmList::AlgorithmList()
     m_algorithms["dijkstra"] = new Dijkstra;
     m_algorithms["a*"] = new AStar;
     m_algorithms["astar"] = new AStar;
+    m_algorithms["bidijkstra"] = new BiDijkstra;
 }
 
 AlgorithmList::~AlgorithmList()
