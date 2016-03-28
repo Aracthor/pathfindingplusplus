@@ -1,16 +1,17 @@
 #include "algo/BiDirectional.hpp"
-#include <iostream> // DEBUG
+
 namespace algo
 {
 
-BiDirectional::BiDirectional() :
+BiDirectional::BiDirectional(IPositionSorter* sorter) :
     m_movements
     ({
 	{'U', Position(+0, -1)}, // Up
 	{'D', Position(+0, +1)}, // Down
 	{'R', Position(+1, +0)}, // Right
 	{'L', Position(-1, +0)}  // Left
-    })
+    }),
+    m_sorter(sorter)
 {
 }
 
@@ -30,6 +31,8 @@ BiDirectional::init()
     m_map->set(m_map->getEnd(), '0');
 
     m_searcherTurn = 0;
+
+    m_sorter->init(m_map);
 }
 
 void
@@ -41,6 +44,7 @@ BiDirectional::nextStep()
     }
     else
     {
+	m_sorter->setObjective(m_searcherTurn == 0 ? &m_map->getEnd() : &m_map->getBegin());
 	this->tryNextPosition();
     }
 
@@ -98,7 +102,7 @@ BiDirectional::tryMovement(const Position& position, char movement, const Positi
 	}
 	else if (m_map->at(position) == '1')
 	{
-	    this->addPositionInQueue(m_positionQueue[m_searcherTurn], position, origin);
+	    m_sorter->addPositionInQueue(m_positionQueue[m_searcherTurn], position, origin);
 	    m_map->set(position, movement);
 	    if (m_display)
 	    {

@@ -4,6 +4,7 @@
 # include <map>
 
 # include "algo/Algorithm.hpp"
+# include "algo/IPositionSorter.hpp"
 # include "algo/PositionQueue.hpp"
 
 namespace algo
@@ -12,7 +13,7 @@ namespace algo
 class	BiDirectional : public Algorithm
 {
 public:
-    BiDirectional();
+    explicit BiDirectional(IPositionSorter* sorter);
     ~BiDirectional();
 
 protected:
@@ -28,15 +29,11 @@ private:
     unsigned int	retracePath(unsigned int searcher, unsigned int pathIndex);
 
 private:
-    virtual void	addPositionInQueue(PositionQueue& queue, const Position& position, const Position& origin) = 0;
-
-protected:
     PositionQueue		m_positionQueue[2];
     Position			m_intersections[2];
     unsigned int		m_searcherTurn;
-
-private:
     std::map<char, Position>	m_movements;
+    IPositionSorter*		m_sorter;
 };
 
 }

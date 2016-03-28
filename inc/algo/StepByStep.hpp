@@ -4,6 +4,7 @@
 # include <map>
 
 # include "algo/Algorithm.hpp"
+# include "algo/IPositionSorter.hpp"
 # include "algo/PositionQueue.hpp"
 
 namespace algo
@@ -12,7 +13,7 @@ namespace algo
 class	StepByStep : public Algorithm
 {
 public:
-    StepByStep();
+    explicit StepByStep(IPositionSorter* sorter);
     ~StepByStep();
 
 protected:
@@ -21,18 +22,14 @@ protected:
     virtual void	onSuccess() override;
 
 private:
-    void	tryNextPosition();
-    void	tryAdjacentPositions(const Position& position);
-    void	tryMovement(const Position& position, char movement, const Position& origin);
+    void		tryNextPosition();
+    void		tryAdjacentPositions(const Position& position);
+    void		tryMovement(const Position& position, char movement, const Position& origin);
 
 private:
-    virtual void	addPositionInQueue(const Position& position, const Position& origin) = 0;
-
-protected:
     PositionQueue		m_positionQueue;
-
-private:
     std::map<char, Position>	m_movements;
+    IPositionSorter*		m_sorter;
 };
 
 }

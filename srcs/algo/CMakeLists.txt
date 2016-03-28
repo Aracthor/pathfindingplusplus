@@ -3,11 +3,10 @@ project("pathfindingplusplus")
 set(ALGO_FILES
   Algorithm.cpp
   AlgorithmList.cpp
-  AStar.cpp
-  BiDijkstra.cpp
+  AStarSorter.cpp
   BiDirectional.cpp
   Clock.cpp
-  Dijkstra.cpp
+  DijkstraSorter.cpp
   Map.cpp
   MapLoader.cpp
   Position.cpp
