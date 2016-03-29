@@ -53,7 +53,7 @@ PositionQueue::insert(const Position& position, const IPositionComparator* compa
     this->checkPush();
 
     index = 0;
-    while (index < m_size && comparator->compare(m_data[index], position) < 0)
+    while (index < m_size && comparator->compare(m_data[index], position) <= 0)
     {
 	index++;
     }
