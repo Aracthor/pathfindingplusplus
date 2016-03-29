@@ -1,8 +1,10 @@
 #include <algorithm>
 
 #include "algo/AlgorithmList.hpp"
-#include "algo/AStar.hpp"
-#include "algo/Dijkstra.hpp"
+#include "algo/AStarSorter.hpp"
+#include "algo/BiDirectional.hpp"
+#include "algo/DijkstraSorter.hpp"
+#include "algo/StepByStep.hpp"
 
 namespace algo
 {
@@ -21,9 +23,12 @@ AlgorithmList::caseLess::operator()(const std::string& a, const std::string& b) 
 
 AlgorithmList::AlgorithmList()
 {
-    m_algorithms["dijkstra"] = new Dijkstra;
-    m_algorithms["a*"] = new AStar;
-    m_algorithms["astar"] = new AStar;
+    m_algorithms["dijkstra"] = new StepByStep(new DijkstraSorter);
+    m_algorithms["a*"] = new StepByStep(new AStarSorter);
+    m_algorithms["astar"] = new StepByStep(new AStarSorter);
+    m_algorithms["bidijkstra"] = new BiDirectional(new DijkstraSorter);
+    m_algorithms["bia*"] = new BiDirectional(new AStarSorter);
+    m_algorithms["biastar"] = new BiDirectional(new AStarSorter);
 }
 
 AlgorithmList::~AlgorithmList()

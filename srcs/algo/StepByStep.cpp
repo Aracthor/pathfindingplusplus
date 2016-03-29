@@ -3,19 +3,21 @@
 namespace algo
 {
 
-StepByStep::StepByStep() :
+StepByStep::StepByStep(IPositionSorter* sorter) :
     m_movements
     ({
 	{'U', Position(+0, -1)}, // Up
 	{'D', Position(+0, +1)}, // Down
 	{'R', Position(+1, +0)}, // Right
 	{'L', Position(-1, +0)}  // Left
-    })
+    }),
+    m_sorter(sorter)
 {
 }
 
 StepByStep::~StepByStep()
 {
+    delete m_sorter;
 }
 
 
@@ -25,6 +27,7 @@ StepByStep::init()
     m_positionQueue.resize(m_map->getWidth() * m_map->getHeight());
     m_positionQueue.pushBack(m_map->getBegin());
     m_map->set(m_map->getBegin(), '0');
+    m_sorter->init(m_map);
 }
 
 void
@@ -89,7 +92,7 @@ StepByStep::tryMovement(const Position& position, char movement, const Position&
 {
     if (m_map->at(position) == '1')
     {
-	this->addPositionInQueue(position, origin);
+	m_sorter->addPositionInQueue(m_positionQueue, position, origin);
 	m_map->set(position, movement);
 	if (m_display)
 	{
