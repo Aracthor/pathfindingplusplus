@@ -28,9 +28,9 @@ For instance:
 For now, the following algorithms can be called (it is not case-sensitive):
 
 - **Dijkstra**: The well known Dijkstra's Algorithm, that explore every tile around the begin in order of distance, until it found the end or doesn't have any more path to explore.
-- **A\***: Pronounced *A-star*, it is an optimization of the Dijkstra's algorithm, giving a priority to path that move close to the end on those that move away.
+- **A star**: It is an optimization of the Dijkstra's algorithm, giving a priority to path that move close to the end on those that move away.
 - **BiDijkstra**: A contraction for *Bi-directional Dijkstra*, it starts two Dijkstra's algorithms: one at the begin and one at the end, that search as usual. The algorithm end when both touch each other or when one of them doesn't have any more path to explore.
-- **BiA\***: The same procedure than *BiDijkstra* but with the *A\** optimization, with each search algorithm prioritizing movement to another.
+- **BiA-star**: The same procedure than *BiDijkstra* but with the *A-star* optimization, with each search algorithm prioritizing movement to another.
 
 
 
